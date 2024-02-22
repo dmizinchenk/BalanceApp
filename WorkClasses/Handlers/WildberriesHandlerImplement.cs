@@ -87,7 +87,7 @@ namespace BalanceApp.WorkClasses.Handlers
 
         public override void FillPrice()
         {
-            if (!string.IsNullOrEmpty(PathToListProducts) || string.IsNullOrEmpty(PathToPriceTemplate))
+            if (string.IsNullOrEmpty(PathToListProducts) || string.IsNullOrEmpty(PathToPriceTemplate))
                 return;
 
             Excel.Application excelApp = ExcelApplication.GetApp;
@@ -108,7 +108,7 @@ namespace BalanceApp.WorkClasses.Handlers
                         ClockModel? clock = Clocks.Where(clock => clock.Model == model).SingleOrDefault();
                         if(clock is not null)
                         {
-                            clock.Id = Convert.ToInt32(excelSheet.Range[$"D{i}"].Value);
+                            clock.Id = Convert.ToInt32(excelSheet.Range[$"A{i}"].Value);
                         }
                     }
                 }

@@ -57,7 +57,7 @@ namespace BalanceApp.WorkClasses.Handlers
                 string cellValue = Convert.ToString(excelSheet.Range[$"A{i}"].Value);
                 if (!String.IsNullOrEmpty(cellValue))
                 {
-                    if (cellValue.Contains("Часы"))
+                    if (cellValue.Contains("Часы", StringComparison.CurrentCultureIgnoreCase) && !cellValue.Contains("уценка", StringComparison.CurrentCultureIgnoreCase))
                     {
                         ClockModel clock = new();
 
